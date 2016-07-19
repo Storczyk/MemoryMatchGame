@@ -23,7 +23,7 @@ namespace MemoryMatchGame
         {
             PlayArea arena = new PlayArea();
             
-            arena.StartArea(playArea,textBox);//playarea to grid z xamla
+            arena.StartArea(playArea,textBlock, startButton);//playarea to grid z xamla
         }
 
     }
@@ -31,7 +31,7 @@ namespace MemoryMatchGame
     {
         private Element[,] elem;
         private int ile;
-        public void StartArea(Grid area,TextBox textBox)
+        public void StartArea(Grid area,TextBlock textBlock, Button startButton)
         {
             double width = area.ActualWidth / 100, height = area.ActualHeight / 100; //ile jpg zmiesci sie w pion/poziom
             area.MinWidth = area.ActualWidth; area.MinHeight = area.MinHeight;
@@ -53,7 +53,8 @@ namespace MemoryMatchGame
             setBoxElements(area,howMany, imgs, rows.Length, columns.Length);
             setNullElements(columns.Length, rows.Length, area);
             ElClickUstaw(elem);
-            setTimer(textBox);
+            startButton.IsEnabled = false;
+            setTimer(textBlock, startButton);
         }
 
         private void createColumnsRows(ColumnDefinition[] columns, RowDefinition[] rows, Grid area)
@@ -79,7 +80,7 @@ namespace MemoryMatchGame
             area.Children.Clear();
         }
 
-        private void setTimer(TextBox textBox)
+        private void setTimer(TextBlock textBlock, Button startButton)
         {
             DispatcherTimer timer = new DispatcherTimer();
             DispatcherTimer clock = new DispatcherTimer();
@@ -89,12 +90,15 @@ namespace MemoryMatchGame
             clock.Start();
             clock.Tick += (sender, EventArgs) =>
             {
+                
                 var curr = DateTime.Now - timerStart;
-                textBox.Text = (curr.Seconds).ToString();
+                textBlock.Text = (curr.Seconds).ToString();
                 if(curr.Seconds==10)
                 {
                     clock.Stop();
-                    textBox.Text = "Start!";
+                    textBlock.Text = "Start!";
+                    startButton.IsEnabled = true;
+                    textBlockChange(textBlock);
                 }
 
             };
@@ -107,6 +111,12 @@ namespace MemoryMatchGame
                 (sender as DispatcherTimer).Stop();
             };
             timer.Start();
+        }
+
+        private async void textBlockChange(TextBlock textBlock)
+        {
+            await Task.Delay(3000);
+            textBlock.Text = "";
         }
 
         private void setBoxElements(Grid area,int[] howMany, List<ImageBrush> imgs, int rows, int columns)

@@ -27,8 +27,8 @@
                 </LinearGradientBrush>
             </Grid.Background>
         </Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="64" Margin="90,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" FontSize="48" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <StackPanel HorizontalAlignment="Left" Height="100" Margin="243,41,0,-50" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="100,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="71" Width="168" FontSize="48" FontWeight="Bold"/>
 
 
     </Grid>
