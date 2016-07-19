@@ -11,7 +11,6 @@ using System.Windows.Threading;
 
 namespace MemoryMatchGame
 {
-
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -22,11 +21,15 @@ namespace MemoryMatchGame
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
             PlayArea arena = new PlayArea();
-            
             arena.StartArea(playArea,textBlock, startButton);//playarea to grid z xamla
         }
 
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
+
     public class PlayArea
     {
         private Element[,] elem;
@@ -37,7 +40,6 @@ namespace MemoryMatchGame
             area.MinWidth = area.ActualWidth; area.MinHeight = area.MinHeight;
             area.MaxWidth = area.ActualWidth; area.MaxHeight = area.MaxHeight;  area.ShowGridLines = true;
             clearArea(area);
-
 
             ColumnDefinition[] columns = new ColumnDefinition[(int)width];
             RowDefinition[] rows = new RowDefinition[(int)height];
@@ -92,12 +94,12 @@ namespace MemoryMatchGame
             {
                 var curr = DateTime.Now - timerStart;
                 textBlock.Text = (curr.Seconds).ToString();
-                if(curr.Seconds==10)
+                if(curr.Seconds>=10)
                 {
                     clock.Stop();
                     textBlock.Text = "Start!";
                     startButton.IsEnabled = true;
-                    textBlockChange(textBlock);
+                    textBlockChange(textBlock, startButton);
                 }
             };
             timer.Interval = new TimeSpan(0, 0, 10);
@@ -109,26 +111,23 @@ namespace MemoryMatchGame
             timer.Start();
         }
 
-        private async void textBlockChange(TextBlock textBlock)
+        private async void textBlockChange(TextBlock textBlock,Button startButton)
         {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(500);
             DateTime start = DateTime.Now;
-            timer.Tick += (sender, e) => Timer_Tick(sender, e, textBlock, start);
+            timer.Tick += (sender, e) => Timer_Tick(sender, e, textBlock, start, startButton);
             timer.Start();
             await Task.Delay(3000);
             textBlock.Text = "";
         }
 
-        private void Timer_Tick(object sender, EventArgs e, TextBlock textBlock, DateTime start)
+        private void Timer_Tick(object sender, EventArgs e, TextBlock textBlock, DateTime start, Button startButton)
         {
             var current = DateTime.Now - start;
             textBlock.Text = current.TotalSeconds.ToString();
-            if(areAllDiscovered())
-            {
+            if(areAllDiscovered() || startButton.IsPressed)
                 (sender as DispatcherTimer).Stop();
-            }
-
         }
 
         private void setBoxElements(Grid area,int[] howMany, List<ImageBrush> imgs, int rows, int columns)
@@ -212,6 +211,7 @@ namespace MemoryMatchGame
         {
             foreach(Element element in elem)
             {
+                if (element.name == "null") continue;
                 if (element.odsloniete == false)
                     return false;
             }

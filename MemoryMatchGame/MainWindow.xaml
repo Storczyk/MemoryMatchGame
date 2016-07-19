@@ -18,7 +18,7 @@
             <RowDefinition Height="482"/>
             <RowDefinition Height="91"/>
         </Grid.RowDefinitions>
-        <Button x:Name="startButton" Content="Start game" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="startButton_Click"/>
+        <Button x:Name="startButton" Content="Start game" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="233" Click="startButton_Click" Height="71"/>
         <Grid x:Name="playArea" Height="482" Width="792">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -28,7 +28,8 @@
             </Grid.Background>
         </Grid>
         <StackPanel HorizontalAlignment="Left" Height="100" Margin="243,41,0,-50" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="100,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="71" Width="168" FontSize="48" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="348,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="71" Width="168" FontSize="48" FontWeight="Bold"/>
+        <Button x:Name="exitButton" Content="Quit" HorizontalAlignment="Left" Margin="645,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="137" Height="51" Click="exitButton_Click"/>
 
 
     </Grid>
