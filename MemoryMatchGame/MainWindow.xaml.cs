@@ -90,7 +90,6 @@ namespace MemoryMatchGame
             clock.Start();
             clock.Tick += (sender, EventArgs) =>
             {
-                
                 var curr = DateTime.Now - timerStart;
                 textBlock.Text = (curr.Seconds).ToString();
                 if(curr.Seconds==10)
@@ -100,23 +99,36 @@ namespace MemoryMatchGame
                     startButton.IsEnabled = true;
                     textBlockChange(textBlock);
                 }
-
             };
-            
-            
             timer.Interval = new TimeSpan(0, 0, 10);
             timer.Tick += (sender, EventArgs) =>
             {
                 showMsgHideAll(elem);
-                (sender as DispatcherTimer).Stop();
+                timer.Stop();
             };
             timer.Start();
         }
 
         private async void textBlockChange(TextBlock textBlock)
         {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(500);
+            DateTime start = DateTime.Now;
+            timer.Tick += (sender, e) => Timer_Tick(sender, e, textBlock, start);
+            timer.Start();
             await Task.Delay(3000);
             textBlock.Text = "";
+        }
+
+        private void Timer_Tick(object sender, EventArgs e, TextBlock textBlock, DateTime start)
+        {
+            var current = DateTime.Now - start;
+            textBlock.Text = current.TotalSeconds.ToString();
+            if(areAllDiscovered())
+            {
+                (sender as DispatcherTimer).Stop();
+            }
+
         }
 
         private void setBoxElements(Grid area,int[] howMany, List<ImageBrush> imgs, int rows, int columns)
