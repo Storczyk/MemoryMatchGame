@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Windows.Threading;
+using System.Threading;
 
 namespace MemoryMatchGame
 {
@@ -46,7 +47,6 @@ namespace MemoryMatchGame
             createColumnsRows(columns, rows, area);
 
             List<ImageBrush> imgs = downloadJpgList();//pobieranie jpgow z folderu
-
             int[] howMany = new int[imgs.Count];
             elem = new Element[columns.Length, rows.Length];
             Array.Clear(howMany, 0, howMany.Length);
@@ -176,10 +176,6 @@ namespace MemoryMatchGame
 
         private async void checkElements(Element element)
         {
-            if(element.name=="null")
-            {
-
-            }
             foreach(Element cell in elem)
             {
                 if(!Equals(cell, element) && cell.last &&element.last &&cell.odsloniete==false &&element.odsloniete==false && cell.name==element.name)
@@ -249,17 +245,25 @@ namespace MemoryMatchGame
         private List<ImageBrush> downloadJpgList()
         {
             string source = Directory.GetCurrentDirectory();
-            var jpgFiles = Directory.EnumerateFiles(source, "Images\\*.jpg");
-            List<ImageBrush> list = new List<ImageBrush>();
             List<string> names = new List<string>();
-            foreach(string currentFile in jpgFiles)
+            List<ImageBrush> list = new List<ImageBrush>();
+            try
             {
-                string fileName = currentFile.Substring(source.Length + 1);
-                if (!names.Contains(fileName))
-                    names.Add(fileName);
-                ImageBrush img = new ImageBrush();
-                img.ImageSource = new BitmapImage(new Uri(fileName, UriKind.Relative));
-                list.Add(img);
+                var jpgFiles = Directory.EnumerateFiles(source, "Images\\*.jpg");
+                foreach (string currentFile in jpgFiles)
+                {
+                    string fileName = currentFile.Substring(source.Length + 1);
+                    if (!names.Contains(fileName))
+                        names.Add(fileName);
+                    ImageBrush img = new ImageBrush();
+                    img.ImageSource = new BitmapImage(new Uri(fileName, UriKind.Relative));
+                    list.Add(img);
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Can not load images. Closing app");
+                Environment.Exit(0);
             }
             return list;
         }      
