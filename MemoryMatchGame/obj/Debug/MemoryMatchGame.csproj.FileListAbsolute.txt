@@ -1,0 +1,14 @@
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\bin\Debug\MemoryMatchGame.exe.config
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\bin\Debug\MemoryMatchGame.exe
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\bin\Debug\MemoryMatchGame.pdb
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MemoryMatchGame.csprojResolveAssemblyReference.cache
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MainWindow.g.cs
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\App.g.cs
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MemoryMatchGame_MarkupCompile.cache
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MemoryMatchGame_MarkupCompile.lref
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MainWindow.baml
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MemoryMatchGame.g.resources
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MemoryMatchGame.Properties.Resources.resources
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MemoryMatchGame.csproj.GenerateResource.Cache
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MemoryMatchGame.exe
+c:\users\paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Debug\MemoryMatchGame.pdb
