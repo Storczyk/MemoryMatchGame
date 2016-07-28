@@ -100,6 +100,7 @@ namespace MemoryMatchGame
                     textBlock.Text = "Start!";
                     startButton.IsEnabled = true;
                     ElClickUstaw(elem);
+
                     textBlockChange(textBlock, startButton);
                 }
             };
