@@ -54,7 +54,7 @@ namespace MemoryMatchGame
             
             setBoxElements(area,howMany, imgs, rows.Length, columns.Length);
             setNullElements(columns.Length, rows.Length, area);
-            ElClickUstaw(elem);
+            
             startButton.IsEnabled = false;
             setTimer(textBlock, startButton);
         }
@@ -99,6 +99,7 @@ namespace MemoryMatchGame
                     clock.Stop();
                     textBlock.Text = "Start!";
                     startButton.IsEnabled = true;
+                    ElClickUstaw(elem);
                     textBlockChange(textBlock, startButton);
                 }
             };
