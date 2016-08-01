@@ -14,3 +14,4 @@ C:\Users\Paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatc
 C:\Users\Pawelpc\Documents\Visual Studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\bin\Release\MemoryMatchGame.exe.config
 C:\Users\Pawelpc\Documents\Visual Studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Release\MemoryMatchGame.exe
 C:\Users\Pawelpc\Documents\Visual Studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Release\MemoryMatchGame.pdb
+C:\Users\Paweł\documents\visual studio 2015\Projects\MemoryMatchGame\MemoryMatchGame\obj\Release\MemoryMatchGame.csprojResolveAssemblyReference.cache
